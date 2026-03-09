@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, User, ArrowLeft } from "lucide-react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 
 const blogPosts: Record<string, { title: string; author: string; date: string; category: string; image: string; content: string }> = {
   "1": {
@@ -253,6 +254,12 @@ const BlogPost = () => {
   if (!post) {
     return (
       <div className="min-h-screen bg-background">
+        <Seo
+          title="Post Not Found | CommUniqueCate Blog"
+          description="The requested blog post could not be found."
+          canonicalPath="/blog"
+          noindex
+        />
         <Navbar />
         <div className="pt-28 pb-16 px-4 text-center">
           <h1 className="font-display text-3xl text-foreground mb-4">Post Not Found</h1>
@@ -267,6 +274,35 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title={`${post.title} | CommUniqueCate Blog`}
+        description={post.content.split("\n")[0]}
+        canonicalPath={`/blog/${id}`}
+        image={post.image}
+        type="article"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          author: {
+            "@type": "Person",
+            name: post.author,
+          },
+          datePublished: post.date,
+          image: post.image,
+          articleSection: post.category,
+          url: `https://communiquecate.in/blog/${id}`,
+          description: post.content.split("\n")[0],
+          publisher: {
+            "@type": "Organization",
+            name: "CommUniqueCate",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://communiquecate.in/favicon.ico",
+            },
+          },
+        }}
+      />
       <Navbar />
       <article className="pt-28 pb-16 px-4">
         <div className="max-w-3xl mx-auto">

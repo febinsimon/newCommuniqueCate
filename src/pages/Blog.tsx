@@ -5,6 +5,7 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 
 const blogPosts = [
   {
@@ -66,6 +67,19 @@ const blogPosts = [
 const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Speech Therapy Blog | CommUniqueCate"
+        description="Read practical tips, expert guidance, and evidence-based insights on children's speech and language development."
+        canonicalPath="/blog"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "CommUniqueCate Blog",
+          url: "https://communiquecate.in/blog",
+          description:
+            "Insights and guidance on speech and language development from speech-language experts.",
+        }}
+      />
       <Navbar />
       <section className="pt-28 pb-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -78,7 +92,7 @@ const Blog = () => {
               Our Blog
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Insights, tips, and stories from our speech pathology experts to help your child thrive.
+              Insights, tips, and stories from our Speech Language Pathologists to help your child thrive.
             </p>
           </motion.div>
 

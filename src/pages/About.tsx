@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 
 const values = [
   {
@@ -35,6 +36,19 @@ const values = [
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="About Us | CommUniqueCate"
+        description="Learn about CommUniqueCate's mission, vision, and values in delivering child-centered online speech therapy and family guidance."
+        canonicalPath="/about"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About CommUniqueCate",
+          url: "https://communiquecate.in/about",
+          description:
+            "CommUniqueCate's mission, vision, and values for online speech therapy support.",
+        }}
+      />
       <Navbar />
 
       <section className="pt-28 pb-14 px-4 gradient-peach">
